@@ -44,7 +44,8 @@ Built with **Llama-3**, **Pinecone**, and **Streamlit**.
 3.  **Build and Run:**
     ```bash
     docker build -t ai-coach .
-    docker run -p 8501:8501 --env-file .env ai-coach
+    # Maps container port 8501 to host port 8518
+    docker run -p 8518:8501 --env-file .env ai-coach
     ```
 
 ### Option 2: Local Python Setup
@@ -58,10 +59,11 @@ Built with **Llama-3**, **Pinecone**, and **Streamlit**.
     ```bash
     streamlit run app.py
     ```
+    *(Note: If port 8501 is busy, Streamlit may default to 8518 or another port. Check your terminal output.)*
 
 ## 📸 Usage
 
-1.  Open `http://localhost:8501`.
+1.  Open **`http://localhost:8518`**.
 2.  Upload your CV (PDF format).
 3.  The AI will analyze your profile and start the interview verbally.
 4.  Reply using the microphone button!
