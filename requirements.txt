@@ -1,12 +1,9 @@
 streamlit
 python-dotenv
 pinecone-client
-langchain
 langchain-pinecone
 langchain-community
-langchain-text-splitters
 groq
 gTTS
 pypdf
-openai
-tiktoken
+langchain-text-splitters
