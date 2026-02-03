@@ -1,43 +1,70 @@
-# 👩‍💼 AI Interview Coach: Zara
+# 👩‍💼 AI Technical Interview Coach
 
-**Zara** is an AI-powered interactive interview simulator designed to conduct voice-based technical interviews. It analyzes your resume (PDF) using **RAG (Retrieval-Augmented Generation)** and asks tailored questions to test your skills.
+**AI Interview Coach** is an interactive, voice-based interview simulator designed to prepare candidates for technical roles. Unlike standard chatbots, it acts as a **professional recruiter**, balancing resume-specific questions with general engineering concepts.
 
-Built with **Llama-3**, **Pinecone**, and **Docker**.
+Built with **Llama-3**, **Pinecone**, and **Streamlit**.
 
-## 🚀 Features
+## 🚀 Key Features
 
-* **📄 Resume Analysis:** Upload your CV (PDF), and Zara creates a custom knowledge base using vector embeddings.
-* **🧠 RAG Architecture:** Uses **LangChain** and **Pinecone** to ground questions in your actual experience (no hallucinations).
-* **🗣️ Voice Interaction:** Real-time Speech-to-Text (Whisper) and Text-to-Speech (gTTS) for a natural conversation flow.
-* **🐳 Dockerized:** Fully containerized application for easy deployment and reproducibility.
-* **⚡ Fast Inference:** Powered by **Groq API** running Llama-3-70b for sub-second latency.
+* **📄 Hybrid Interview Engine:**
+    * **Resume Analysis (RAG):** Upload your PDF, and the AI asks specific questions about your past projects using Vector Search.
+    * **General Knowledge:** Randomly tests you on core concepts (e.g., "Monolith vs Microservices", "Python Memory Management").
+    * **Scenario & Debugging:** Poses real-world problem-solving scenarios.
+* **🇬🇧 Real-time English Coaching:** Detects grammar mistakes in your speech and provides instant correction tips (e.g., *"Tip: Say 'I went' instead of 'I goed'"*) before asking the next question.
+* **🗣️ Full Voice Interaction:**
+    * **Speech-to-Text:** Speaks with you using OpenAI's Whisper model.
+    * **Text-to-Speech:** Responds with a natural voice using gTTS.
+* **⚡ High Performance:** Powered by **Groq API** (Llama-3.3-70b) for sub-second latency.
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** Streamlit
-* **LLM Engine:** Llama-3 (via Groq)
-* **Vector DB:** Pinecone (Serverless)
+* **Frontend:** Streamlit (Custom CSS & Avatar Animations)
+* **LLM Engine:** Llama-3.3-70b-versatile (via Groq)
+* **Vector DB:** Pinecone (Serverless / Semantic Search)
 * **Orchestration:** LangChain
-* **DevOps:** Docker
-* **Audio:** OpenAI Whisper & gTTS
+* **Audio Processing:** OpenAI Whisper (STT) & gTTS (TTS)
+* **Deployment:** Docker
 
-## 📦 How to Run (Docker)
+## 📦 How to Run
 
-This project is fully dockerized. You can run it locally with a single command.
+### Option 1: Using Docker (Recommended)
 
-### Prerequisites
-* Docker Desktop installed
-* `.env` file with API keys (`GROQ_API_KEY`, `PINECONE_API_KEY`)
-
-### Quick Start
-
-1. **Build the Image:**
-   ```bash
-   docker build -t zara-ai .
-
-2. **Run the Container:**
+1.  **Clone the repository:**
     ```bash
-    docker run -p 8501:8501 --env-file .env zara-ai
-3. **Open Browser: Go to http://localhost:8501 and start your interview!**
+    git clone [https://github.com/YOUR_USERNAME/ai-interview-coach.git](https://github.com/YOUR_USERNAME/ai-interview-coach.git)
+    cd ai-interview-coach
+    ```
 
-Developed by Merve Caliskan
+2.  **Create a `.env` file** with your API keys:
+    ```env
+    GROQ_API_KEY=your_groq_api_key
+    PINECONE_API_KEY=your_pinecone_api_key
+    ```
+
+3.  **Build and Run:**
+    ```bash
+    docker build -t ai-coach .
+    docker run -p 8501:8501 --env-file .env ai-coach
+    ```
+
+### Option 2: Local Python Setup
+
+1.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2.  **Run the app:**
+    ```bash
+    streamlit run app.py
+    ```
+
+## 📸 Usage
+
+1.  Open `http://localhost:8501`.
+2.  Upload your CV (PDF format).
+3.  The AI will analyze your profile and start the interview verbally.
+4.  Reply using the microphone button!
+
+---
+**Developed by Merve Caliskan**
